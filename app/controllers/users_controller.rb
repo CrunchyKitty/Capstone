@@ -1,19 +1,23 @@
 class UsersController < ApplicationController
   
-  def index
+  def index 
     users = User.all
+    if params[:first_name] && params[:last_name]
+    search_results = User.where('first_name iLike ? AND last_name iLike ?', params[:first_name], params[:last_name])
+    end
     render json: users.as_json
   end 
 
   def create 
     user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      password_confirmation:[:password_confirmation]
-      )
+                    first_name: params[:first_name],
+                    last_name: params[:last_name],
+                    email: params[:email],
+                    password: params[:password],
+                    password_confirmation:[:password_confirmation]
+                    )
       if user.save
-        render json:{message: 'User created successfully'},
+        render json:{message:'User created successfully'},
           status: :created
       else
         render json: {errors: user.errors.full_messages},
