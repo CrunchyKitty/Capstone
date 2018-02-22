@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include Knock::Authenticable
+  # before_action :authenticate_user
 
   def authenticate_nanny
     unless current_user && current_user.nanny 
