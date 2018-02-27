@@ -13,17 +13,21 @@ class UsersController < ApplicationController
                     first_name: params[:first_name],
                     last_name: params[:last_name],
                     email: params[:email],
+                    gender: params[:gender],
+                    city: params[:city],
+                    state: params[:state],
+                    zip_code: params[:zip_code],
                     password: params[:password],
-                    password_confirmation:[:password_confirmation]
+                    password_confirmation: params[:password_confirmation]
                     )
-      if user.save
-        render json:{message:'User created successfully'},
-          status: :created
-      else
-        render json: {errors: user.errors.full_messages},
-          status: :bad_request
-      end
+    if user.save
+      render json:{message:'User created successfully'},
+        status: :created
+    else
+      render json: {errors: user.errors.full_messages},
+        status: :bad_request
     end
+  end
 
   def show
     user = User.find(params[:id])
@@ -36,6 +40,9 @@ class UsersController < ApplicationController
     @user.last_name = params[:last_name] || @user.last_name
     @user.email = params[:email] || @user.email
     @user.image_url = params[:image_url] || @user.image_url
+    @user.city = params[:city] || @user.city
+    @user.state = params[:state] || @user.state
+    @user.zip_code = params[:zip_code] || @user.zip_code
     if @user.save
       render 'show.json.jbuilder'
     else

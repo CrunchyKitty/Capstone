@@ -2,12 +2,12 @@ class RequestsController < ApplicationController
   before_action :authenticate_parent, only: [:create]
   before_action :authenticate_nanny, only: [:accept]
 
-  def index
+  def index_request
     @requests = current_user.created_requests
     render 'index.json.jbuilder'
   end
 
-  def create
+  def create_request
     @request = Request.create(
                               parent_id: current_user.id,
                               status: "pending"
@@ -15,18 +15,18 @@ class RequestsController < ApplicationController
     render 'show.json.jbuilder'
   end
 
-  def accept
+  def accept_request
     @request = Request.find(params[:id])
     @request.update(nanny_id: current_user.id, status: "accepted")
     render 'show.json.jbuilder'
   end
  
-  def show
+  def show_request
     @request = Request.find(params[:id])
     render 'show.json.jbuilder'
   end
 
-  def update
+  def update_request
     @request = Request.find(params[:id])
     
     @request.start_time = params[:start_time] || @request.start_time
@@ -42,7 +42,7 @@ class RequestsController < ApplicationController
     end
   end
 
-  def destroy
+  def destroy_request
     request = request.find(params[:id])
     request.destroy
     render json: {message: "Successfully destroyed request ##{request.id}"}

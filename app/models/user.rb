@@ -1,13 +1,11 @@
-require 'bcrypt'
-
 class User < ApplicationRecord
   has_secure_password
-  include BCrypt
 
   has_many :created_requests, class_name: "Request", foreign_key: "parent_id"
   has_many :received_requests, class_name: "Request", foreign_key: "nanny_id"
 
-  validates :name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :email, presence: true, uniqueness: true
 
   def pending_requests
