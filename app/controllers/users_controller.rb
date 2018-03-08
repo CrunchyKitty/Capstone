@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     render json: users.as_json
   end 
 
+  def nannies
+    nannies = User.where(nanny: true)
+    render json: nannies.as_json
+  end
+
   def create 
     user = User.new(
                     first_name: params[:first_name],
@@ -30,8 +35,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user.as_json
+    @user = User.find(params[:id])
+
+    render 'show.json.jbuilder'
   end
 
   def update
@@ -39,7 +45,6 @@ class UsersController < ApplicationController
     @user.first_name = params[:first_name] || @user.first_name
     @user.last_name = params[:last_name] || @user.last_name
     @user.email = params[:email] || @user.email
-    @user.image_url = params[:image_url] || @user.image_url
     @user.city = params[:city] || @user.city
     @user.state = params[:state] || @user.state
     @user.zip_code = params[:zip_code] || @user.zip_code

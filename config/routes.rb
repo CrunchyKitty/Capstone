@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/users' => 'users#index'
+  get '/users/nannies' => 'users#nannies'
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'
   patch '/users/:id' => 'users#update'
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
 
   post 'user_token' => 'user_token#create'
   post 'users' => 'users#create'
+
+  get '/profiles/:current_user' => 'users#show'
 
   # get '/created_requests' => 'created_requests#index'
   # post '/created_requests' => 'created_requests#create'

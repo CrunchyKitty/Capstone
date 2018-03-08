@@ -2,31 +2,45 @@ class RequestsController < ApplicationController
   before_action :authenticate_parent, only: [:create]
   before_action :authenticate_nanny, only: [:accept]
 
-  def index_request
+  def index
     @requests = current_user.created_requests
     render 'index.json.jbuilder'
   end
 
-  def create_request
-    @request = Request.create(
+  def create
+    @request = Request.new(
                               parent_id: current_user.id,
+                              nanny_id: params[:nanny_id],
+                              pay_rate: params[:pay_rate],
+                              number_of_children: params[:number_of_children],
+                              start_time: params[:start_time],
+                              end_time: params[:end_time],
+                              location: params[:location],
                               status: "pending"
                               )
-    render 'show.json.jbuilder'
+    if @request.save
+      render 'show.json.jbuilder'
+    else
+      @request.errors.full_messages.each do |error|
+        puts error
+      end
+    end
   end
 
-  def accept_request
+  def accept
     @request = Request.find(params[:id])
     @request.update(nanny_id: current_user.id, status: "accepted")
     render 'show.json.jbuilder'
+    #change this to accept an array of id's
   end
  
-  def show_request
+  def show
     @request = Request.find(params[:id])
+
     render 'show.json.jbuilder'
   end
 
-  def update_request
+  def update
     @request = Request.find(params[:id])
     
     @request.start_time = params[:start_time] || @request.start_time
@@ -42,11 +56,10 @@ class RequestsController < ApplicationController
     end
   end
 
-  def destroy_request
+  def destroy
     request = request.find(params[:id])
     request.destroy
     render json: {message: "Successfully destroyed request ##{request.id}"}
   end
-
 end
   
