@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   patch '/users/:id' => 'users#update'
   delete '/users/:id' => 'users#destroy'
 
-  get '/requests' => 'requests#index'
+  # get '/requests' => 'requests#index'
   post 'requests' => 'requests#create'
   get '/requests/:id' => 'requests#show'
   patch '/requests/:id' => 'requests#update'
@@ -16,10 +16,6 @@ Rails.application.routes.draw do
   post 'user_token' => 'user_token#create'
   post 'users' => 'users#create'
 
-  get '/profiles/:current_user' => 'users#show'
-
-  # get '/created_requests' => 'created_requests#index'
-  # post '/created_requests' => 'created_requests#create'
-  # delete '/created_requests/:id' => 'created_requests#destroy'
+  get '/profiles/:current_user' => 'users#show' 
   
 end

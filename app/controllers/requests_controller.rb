@@ -2,10 +2,12 @@ class RequestsController < ApplicationController
   before_action :authenticate_parent, only: [:create]
   before_action :authenticate_nanny, only: [:accept]
 
-  def index
-    @requests = current_user.created_requests
-    render 'index.json.jbuilder'
-  end
+  # def index
+  #   if current_user 
+  #     @requests = current_user.request
+  #     render 'index.json.jbuilder'
+  #   end
+  # end
 
   def create
     @request = Request.new(
