@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/users/nannies' => 'users#nannies'
   post '/users' => 'users#create'
   get '/users/:id' => 'users#show'
+  get '/profile' => 'users#profile'
   patch '/users/:id' => 'users#update'
   delete '/users/:id' => 'users#destroy'
 

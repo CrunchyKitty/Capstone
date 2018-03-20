@@ -24,52 +24,10 @@
     <link href="/css/agency.min.css" rel="stylesheet">
  
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
-  <script src="https://unpkg.com/axios/dist/axios.js"></script>
-  <script src="index.js" defer></script> 
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.js"></script>
+    <script src="index.js" defer></script> 
 
-  </head>
-
-  <body id="page-top">
-
-    <div id="vue-app">
-
-    <!-- Navigation --> 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">NannyNow</a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-berg" aria-controls="navbar-berg" aria-expanded="false" aria-label="Toggle navigation"> -->
-          <!-- <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/#/login">Log In</a>
-            </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#sign up">Sign Up</a>
-            </li> -->
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#backgroundCheck">Background Check</a>
-            </li>
-           <!--  <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#team">Team</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-            </li> -->
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-
-<router-view></router-view>
-
-
-
-
- 
     <!-- Bootstrap core JavaScript -->
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -82,22 +40,64 @@
     <script src="/js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/js/agency.min.js"></script>
+    <!-- <script src="/js/agency.min.js"></script> -->
+
+  </head>
+
+  <body id="page-top">
+
+    <div id="vue-app">
+
+      <div>
+        
+        <!-- Navigation --> 
+        <nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+          <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">NannyNow</a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-berg" aria-controls="navbar-berg" aria-expanded="false" aria-label="Toggle navigation"> -->
+              <!-- <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="/#/login">Log In</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#sign up">Sign Up</a>
+                </li> -->
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#backgroundCheck">Background Check</a>
+                </li>
+               <!--  <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+
+  <!-- Not An User Templates
+   -->
+      <!-- Header -->
 
 
 
-  </div>
+    <router-view></router-view>
 
 
+    </div>
   </body>
-
 </html>
 
-
-<!-- Not An User Templates
- -->
-    <!-- Header -->
-<template id="No-user-page">
+<template id="no-user-page">
+  <div class="vue-component">
+    
+  
     <header class="masthead">
       <div class="container">
         <div class="intro-text">
@@ -241,6 +241,7 @@
       </div>
     </section>
 
+
     <!-- About -->
     <section id="about">
       <div class="container">
@@ -287,11 +288,11 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>December 2012</h4>
+                    <h4>Qualifyng</h4>
                     <h4 class="subheading">Transition to Full Service</h4>
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                    <p class="text-muted">Once an applicants personal information has been verified and we can ensure they meet our required safety standards, an applicant is sent a copy of their government backgroung free to create  </p>
                   </div>
                 </div>
               </li>
@@ -301,18 +302,18 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h4>July 2014</h4>
-                    <h4 class="subheading">Phase Two Expansion</h4>
+                    <h3>Application</h3>
+                   <!--  <h4 class="subheading">Phase Two Expansion</h4> -->
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">All service providers are required to </p>
+                    <p class="text-muted">The first step in the process of providing care service through NannyNow requires all of our applicants to submit their information to be filtered through our vetting process. This filtering process allows us to ensure and maintain a pool of qualified service providers at your service. </p>
                   </div>
                 </div>
               </li>
               <li class="timeline-inverted">
                 <div class="timeline-image">
                   <h4> Keeping
-                    <br>our users
+                    <br>yours
                     <br>safe</h4>
                 </div>
               </li>
@@ -407,7 +408,7 @@
       </div>
     </section>
 
-   
+
     <!-- Contact -->
     <section id="contact">
       <div class="container">
@@ -492,27 +493,34 @@
         </div>
       </div>
     </footer>
+
+</div>
 </template>
+
+
 
 
 <!-- user templates -->
-<template id="user-show-page">
+
+<!-- <template id="user-show-page">
   <div class="vue-component">
     <div class="container">
-      <h3>{{ user.imageUrl }}</h3>
-      <h3>{{ user.first_name }}</h3>
-        <h3>{{ user.last_name }}</h3>
-          <h3>{{ user.email }}</h3>
-            <h3>{{ user.gender }}</h3>
-              <h3>{{ user.city }}</h3>
-                <h3>{{ user.state }}</h3>
-                  <h3>{{ user.zipCode }}</h3>
+
+      <h5>{{ user.imageUrl }}</h5>
+      <h5>{{ user.first_name }}</h5>
+      <h5>{{ user.last_name }}</h5>
+      <h5>{{ user.email }}</h5>
+      <h5>{{ user.gender }}</h5>
+      <h5>{{ user.city }}</h5>
+      <h5>{{ user.state }}</h5>
+      <h5>{{ user.zipCode }}</h5>
+
       <img v-bind:src="user.image_url" alt="">
-      <a class="btn btn-warning" v-bind:href="'/#/users/' + user.id + '/edit'">Edit</a>
+      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Edit</a>
       <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete</a>
     </div>
   </div>
-</template>
+</template> -->
 
 <template id="users-edit-page">
   <div class="vue-component">
@@ -524,7 +532,7 @@
       </ul> 
       <div class="form-group">
         <label>First Name:</label>
-        <input type="text" class="form-control" v-model="first_name">    
+        <input type="text" class="form=control" v-model="first_name">    
       </div> 
       <div class="form-group">
         <label>Last Name:</label>
@@ -532,23 +540,23 @@
       </div>
       <div class="form-group">
         <label>Email:</label>
-        <input type="text" class="form-control" v-model="email">      
+        <input type="text" class="form=control" v-model="email">      
       </div>
       <div class="form-group">
         <label>Gender:</label>
-        <input type="text" class="form-control" v-model="gender">      
+        <input type="text" class="form=control" v-model="gender">      
       </div>
       <div class="form-group">
         <label>City:</label>
-        <input type="text" class="form-control" v-model="city">      
+        <input type="text" class="for=control" v-model="city">      
       </div>
       <div class="form-group">
         <label>State:</label>
-        <input type="text" class="form-control" v-model="state">      
+        <input type="text" class="form=control" v-model="state">      
       </div>
       <div class="form-group">
         <label>Zip Code:</label>
-        <input type="text" class="form-control" v-model="zipCode">      
+        <input type="text" class="form=control" v-model="zipCode">      
       </div>
       <div class="form-group">
         <label>Change your profile photo:</label>
@@ -556,11 +564,11 @@
       </div>
       <div class="form-group">
         <label>Password:</label>
-        <input type="text" class="form-control" v-model="password">      
+        <input type="text" class="form=control" v-model="password">      
       </div> 
       <div class="form-group">
         <label>Password Confirmation:</label>
-        <input type="text" class="form-control" v-model="password_confirmation">      
+        <input type="text" class="form=control" v-model="password_confirmation">      
       </div> 
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>   
     </div>  
@@ -754,6 +762,40 @@
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
+  </div>
+</template>
+
+
+<template id="user-profile-page">
+  <div class="vue-component">
+    <div v-if="user" class="container">
+      <h3>{{ user.imageUrl }}</h3>
+      <h3>{{ user.first_name }}</h3>
+      <h3>{{ user.last_name }}</h3>
+      <h3>{{ user.email }}</h3>
+      <h3>{{ user.gender }}</h3>
+      <h3>{{ user.city }}</h3>
+      <h3>{{ user.state }}</h3>
+      <h3>{{ user.zipCode }}</h3>
+
+      <img v-bind:src="user.image_url" alt="">
+      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Edit</a>
+     <!--  <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete</a> -->
+
+
+        <div v-for="request in requests">
+          <a v-bind:href="'/#/requests/' + request.id + '/edit'">
+            <p>Status: {{ request.status }}</p>
+            <p>Start: {{ request.start_time }}</p>
+            <p>End: {{ request.end_time }}</p>
+            <p>Location: {{ request.location }}</p>
+            <p>Children #: {{ request.number_of_children }}</p>
+            <p>Rate: {{ request.pay_rate }}</p>
+          </a>
+        </div>
+      <!-- <img v-bind:src="" alt=""> -->
+    </div>
+    <a class="btn btn-primary" v-bind:href="'/#/requests/' + user.id + '/request'">See requests</a>
   </div>
 </template>
 

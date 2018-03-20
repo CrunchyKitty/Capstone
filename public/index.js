@@ -5,30 +5,30 @@ var NoUserPage = {
     return {
 
     }
-  };
-},
-
-var UsersIndexPage = {
-  template: "#users-index-page",
-  data: function() {
-    return {
-      users: [],
-      currentUser: {formatted: {}}
-    };
-  },
-  created: function() {
-    axios.get("/users")
-      .then(function(response) {
-        this.users = response.data;
-      }.bind(this));
-  },
-  methods: {
-    setCurrentUser: function(user) {
-      this.currentUser = user;
-    }
-  },
-  computed: {}
+  }
 };
+
+// var UsersIndexPage = {
+//   template: "#users-index-page",
+//   data: function() {
+//     return {
+//       users: [],
+//       currentUser: {formatted: {}}
+//     };
+//   },
+//   created: function() {
+//     axios.get("/users")
+//       .then(function(response) {
+//         this.users = response.data;
+//       }.bind(this));
+//   },
+//   methods: {
+//     setCurrentUser: function(user) {
+//       this.currentUser = user;
+//     }
+//   },
+//   computed: {}
+// };
 
 // var UsersNewPage = {
 //   template: "#users-new-page",
@@ -103,7 +103,7 @@ var UsersShowPage = {
 };
 
 var UsersEditPage = {
-    template: "#users-update-page",
+    template: "#users-edit-page",
     data: function () {
       return {
       first_name: "",
@@ -121,7 +121,7 @@ var UsersEditPage = {
     },
     created: function () {
       axios 
-      .get("/users/ + this.$route.params.id")
+      .get("/users/" + this.$route.params.id)
       .then(function(response) {
           console.log(response.data);
           var user = response.data;
@@ -153,13 +153,13 @@ methods: {
       password_confirmation:this.password_confirmation 
     };
     axios 
-      .patch("/users/"+ this.$route.params.id, params).then(function(response) {
-        router.push("/users/" + response.data.id);
+      .patch("/users/" + this.$route.params.id, params).then(function(response) {
+        router.push("/profile");
       }.bind(this))
       .catch(
         function(error) {
           this.errors = error.response.data.errors;
-          router.push("/login");
+          router.push("/profile");
         }.bind(this))
       }
     }
@@ -399,7 +399,7 @@ var LoginPage = {
       .then(function(response) {
         axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
-        router.push("/");
+        router.push("/profile");
       })
       .catch (
         function(error) {
@@ -411,6 +411,35 @@ var LoginPage = {
     }
   }
 };
+
+var UserProfilePage = {
+  template: "#user-profile-page",
+  data: function() {
+    return {
+      user: {
+        first_name: "",
+        last_name: "",
+        email: "",
+        gender: "",
+        city: "",
+        state: "",
+        zipCode: "",
+        imageUrl: "",
+        errors:[]   
+      },
+      requests: [{}]
+    };
+  },
+
+  created: function() {
+    console.log('bruh');
+    axios.get("/profile").then(function(response) {
+      this.user = response.data["user"];
+      this.requests = response.data["requests"];
+    }.bind(this));
+  }
+};
+
 
 var LogoutPage = {
   created: function() {
@@ -427,12 +456,13 @@ var router = new VueRouter ({
 
           { path : "/", component: NoUserPage },
 
-          { path: "/users", component: UsersIndexPage },
+          // { path: "/users", component: UsersIndexPage },
           // { path: "/users/nannies", component: UsersNanniesPage },
-          { path: "/users/signup", component: UsersNewPage },
+          // { path: "/users/signup", component: UsersNewPage },
+          { path: "/profile", component: UserProfilePage},
           { path: "/users/:id", component: UsersShowPage },
-          { path: 'users/:id/edit', component: UsersEditPage },
-          { path: 'users/:id/delete', component: UsersDestroyPage },
+          { path: '/users/:id/edit', component: UsersEditPage },
+          { path: '/users/:id/delete', component: UsersDestroyPage },
 
           { path: "/", component: RequestsShowPage },
           // { path: "/requests", component: RequestsShowPage },
@@ -443,7 +473,7 @@ var router = new VueRouter ({
           { path: '/requests/:id', component: RequestsDestroyPage},
 
           // { path: "/profiles/:currentUser", component: UsersShowPage}
-
+          // { path: "/logged", component: LoggedInPage },
           { path: "/signup", component: SignupPage },
           { path: "/login", component: LoginPage },
           { path: "/logout", component: LogoutPage }
