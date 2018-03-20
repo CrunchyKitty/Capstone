@@ -40,14 +40,8 @@ class UsersController < ApplicationController
   end
 
   def profile
+    p request.headers["Authorization"]
     @user = current_user
-    # @user.first_name = params[:first_name] || @user.first_name
-    # @user.last_name = params[:last_name] || @user.last_name
-    # @user.email = params[:email] || @user.email
-    # @user.city = params[:city] || @user.city
-    # @user.state = params[:state] || @user.state
-    # @user.zip_code = params[:zip_code] || @user.zip_code
-    
     render 'show.json.jbuilder'
   end
 

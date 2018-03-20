@@ -301,7 +301,7 @@ var RequestsEditPage = {
       axios 
       .patch("/requests/" + this.$route.params.id,params)
       .then(function(response) {
-        router.push("/recipes/" + response.data.id);
+        router.push("/profile/");
       }.bind(this))
       .catch(
         function(error) {
@@ -397,7 +397,7 @@ var LoginPage = {
       axios
       .post("/user_token", params)
       .then(function(response) {
-        axios.defaults.headers.common["Authorization"] = "Bearer" + response.data.jwt;
+        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         router.push("/profile");
       })
@@ -432,7 +432,6 @@ var UserProfilePage = {
   },
 
   created: function() {
-    console.log('bruh');
     axios.get("/profile").then(function(response) {
       this.user = response.data["user"];
       this.requests = response.data["requests"];
@@ -468,7 +467,7 @@ var router = new VueRouter ({
           // { path: "/requests", component: RequestsShowPage },
           { path: "/requests/:id", component: RequestsNewPage },
           { path: "/requests/:id", component: RequestsShowPage },
-          { path: '/requests/:id', component: RequestsEditPage },
+          { path: '/requests/:id/edit', component: RequestsEditPage },
           { path: '/requests/:id/accept', component: RequestsAcceptPage },
           { path: '/requests/:id', component: RequestsDestroyPage},
 
@@ -490,7 +489,7 @@ var app = new Vue ({
   created: function () {
     var jwt = localStorage.getItem("jwt");
     if (jwt) {
-      axios.defaults.headers.common["Authorization"] = jwt;
+      axios.defaults.headers.common["Authorization"] = "Bearer " + jwt;
     }
   }
 });
