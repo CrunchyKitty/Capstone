@@ -10,23 +10,26 @@ class RequestsController < ApplicationController
   # end
 
   def create
-    @request = Request.new(
-                              parent_id: current_user.id,
-                              nanny_id: params[:nanny_id],
-                              pay_rate: params[:pay_rate],
-                              number_of_children: params[:number_of_children],
-                              start_time: params[:start_time],
-                              end_time: params[:end_time],
-                              location: params[:location],
-                              status: "pending"
-                              )
-    if @request.save
-      render 'show.json.jbuilder'
-    else
-      @request.errors.full_messages.each do |error|
-        puts error
-      end
-    end
+    puts "***** we got here *****"
+    # @request = Request.new(
+    #                           parent_id: current_user.id,
+    #                           nanny_id: params[:nanny_id],
+    #                           pay_rate: params[:pay_rate],
+    #                           number_of_children: params[:number_of_children],
+    #                           start_time: params[:start_time],
+    #                           end_time: params[:end_time],
+    #                           location: params[:location],
+    #                           status: "pending"
+    #                           )
+
+    # if @request.save
+    #   render 'show.json.jbuilder'
+    # else
+    #   @request.errors.full_messages.each do |error|
+    #     puts error
+    #   end
+    # end
+    render json: {message: "all good"}
   end
 
   def accept

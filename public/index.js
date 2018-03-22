@@ -139,7 +139,7 @@ var UsersEditPage = {
     }, 
 
 methods: {
-  submit : function () {
+  submit: function () {
     var params = {
       first_name: this.first_name,
       last_name: this.last_name,
@@ -152,6 +152,7 @@ methods: {
       password: this.password, 
       password_confirmation:this.password_confirmation 
     };
+
     axios 
       .patch("/users/" + this.$route.params.id, params).then(function(response) {
         router.push("/profile");
@@ -162,8 +163,27 @@ methods: {
           router.push("/profile");
         }.bind(this))
       }
+    },
+
+    uploadFile: function(event) {
+      if (event.target.files.length > 0) {
+        var formData = new FormData();
+        formData.append("image", event.target.files[0]);
+
+        axios
+          .post("http://localhost:3000/users/images", formData)
+          .then(function(response) {
+            console.log(response);
+            // this.title = "";
+            // this.body = "";
+            event.target.value = "";
+          }.bind(this));
+      }
     }
   };
+  
+
+
    
 var UsersDestroyPage = {
   created: function() {
@@ -195,7 +215,6 @@ var RequestsNewPage = {
   template: "#requests-new-page",
   data: function() {
     return {
-        parent_id: "", 
         nanny_id: "",
         pay_rate: "",
         number_of_children:"", 
@@ -205,21 +224,23 @@ var RequestsNewPage = {
         errors: []
     };
   },
+  // created: function(){
+  //   console.log("Zipora");
+  // },
   methods: {
     submit: function() {
-      var params = {
-        parent_id : this.parent_id, 
-        nanny_id : this.nanny_id,
-        pay_rate : this.pay_rate,
-        number_of_children : this.number_of_children,
-        start_time : this.start_time,
-        end_time : this.end_time,
-        location : this.location
+      var params = { 
+        nanny_id: this.nanny_id,
+        pay_rate: this.pay_rate,
+        number_of_children: this.number_of_children,
+        start_time: this.start_time,
+        end_time: this.end_time,
+        location: this.location
       };
       axios
         .post("/requests", params)
         .then(function(response) {
-          router.push("/");
+          router.push("/profile");
         })
         .catch(
           function(error) {
@@ -333,51 +354,105 @@ var RequestsDestroyPage = {
 
   // Auth components
 
+// var SignupPage = {
+//   template: "#signup-page",
+//   data: function () {
+//     return {
+//       first_name: "" ,
+//       last_name: "",
+//       email: "" ,
+//       gender: "" ,
+//       age: "",
+//       city: "" , 
+//       state: "" , 
+//       zipCode: "" , 
+//       // image_url: "" ,
+//       password: "" , 
+//       password_confirmation:"" ,
+//       // errors: []
+//     };
+//   },
+// methods: {
+//   submit: function () {
+//     var params = {
+//       first_name: this.first_name,
+//       last_name: this.last_name,
+//       email: this.email,
+//       gender: this.gender, 
+//       age: this.age,
+//       city: this.city, 
+//       state: this.state,
+//       zipCode: this.zipCode,
+//       image_url: this.image_url,
+//       password: this.password,
+//       password_confirmation: this.password_confirmation
+//     };
+//     axios
+//       .post("/users",params)
+//       .then(function(response) {
+//         router.push("/login");
+//       })
+//       .catch(
+//         function(error) {
+//           this.errors = error.response.data.errors;
+//         }.bind(this)
+//       );
+//     }
+//   }
+// };
+
 var SignupPage = {
-  template: "#signup-page",
-  data: function () {
+  template: '#signup-page',
+  data: function() {
     return {
-      first_name: "" ,
-      last_name: "",
-      email: "" ,
-      gender: "" ,
-      age: "",
-      city: "" , 
-      state: "" , 
-      zipCode: "" , 
-      image_url: "" ,
-      password: "" , 
-      password_confirmation:"" ,
-      errors: []
+            first_name: "" ,
+            last_name: "",
+            email: "" ,
+            gender: "" ,
+            age: "",
+            city: "" , 
+            state: "" , 
+            zipCode: "" , 
+            password: "" , 
+            password_confirmation:"",
+            errors: []
     };
   },
-methods: {
-  submit: function () {
-    var params = {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      email: this.email,
-      gender: this.gender, 
-      age: this.age,
-      city: this.city, 
-      state: this.state,
-      zipCode: this.zipCode,
-      image_url: this.image_url,
-      password: this.password,
-      password_confirmation: this.password_confirmation
-    };
-    axios
-      .post("/users",params)
-      .then(function(response) {
-        router.push("/login");
-      })
-      .catch(
-        function(error) {
-          this.errors = error.response.data.errors;
-        }.bind(this)
-      );
+  created: function() {},
+  methods: {
+    uploadFile: function(event) {
+      if (event.target.files.length > 0) {
+        var formData = new FormData();
+        formData.append("first_name", this.first_name);
+        formData.append("last_name", this.last_name);
+        formData.append("email", this.email);
+        formData.append("gender", this.gender);
+        formData.append("city", this.city);
+        formData.append("state", this.state);
+        formData.append("zipCode", this.zipCode);
+        formData.append("password", this.password);
+        formData.append("password_confirmation", this.password_confirmation);
+        formData.append("image", event.target.files[0]);
+
+        axios
+        .post("/users", formData)
+        .then(function(response) {
+          console.log("test");
+          this.first_name = "";
+          this.last_name = "";
+          this.email = "";
+          this.gender = "";
+          this.city = "";
+          this.state = "";
+          this.zipCode = "";
+          this.password = "";
+          this.password_confirmation = "";
+          event.target.value = "";
+        }.bind(this));
+      }
     }
-  }
+  },
+  computed: {}
 };
 
 var LoginPage = { 
@@ -465,7 +540,7 @@ var router = new VueRouter ({
 
           { path: "/", component: RequestsShowPage },
           // { path: "/requests", component: RequestsShowPage },
-          { path: "/requests/:id", component: RequestsNewPage },
+          { path: "/requests/new", component: RequestsNewPage },
           { path: "/requests/:id", component: RequestsShowPage },
           { path: '/requests/:id/edit', component: RequestsEditPage },
           { path: '/requests/:id/accept', component: RequestsAcceptPage },
@@ -486,6 +561,11 @@ var router = new VueRouter ({
 var app = new Vue ({
   el: "#vue-app",
   router: router,
+  data: function() {
+    return{
+      menuZipora:false
+    }
+  },
   created: function () {
     var jwt = localStorage.getItem("jwt");
     if (jwt) {

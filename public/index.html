@@ -22,7 +22,6 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/agency.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="/my_css.css">
  
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -62,25 +61,29 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
               <ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/#/login">Log In</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#sign up">Sign Up</a>
-                </li> -->
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#Becomeaserviceprovider">Become a provider</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="/#/logout">Log Out</a>
-                </li>
+                  <a class="js-scroll-trigger nav-link" href="/#/login">Log In</a>
+                  <!-- nav-link -->
+            
+                </li> 
 
-
-               <!--  <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+                <li class="nav-item dropdown">
+                  <a v-on:click="menuZipora=!menuZipora" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More Options<b class="caret"></b>
+                  </a>
+                  <div v-if="menuZipora" >
+                    <div class="drpdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item " href="/#/requests/new">Make a request</a>
+                    <a class="dropdown-item " href="/#/">Become a provider</a>
+                    <a class="dropdown-item " href="/#/profile">My profile</a>
+                
+                  </div>
+                  </div>
+                  
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-                </li> -->
+                  <a class=" js-scroll-trigger nav-link" href="/#/logout">Log Out</a>
+                  <!-- nav-link -->
+                </li>
               </ul>
             </div>
           </div>
@@ -156,7 +159,7 @@
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">Care Superstars</h2>
 
-            <h3 class="section-subheading text-muted">Every month we celebrate a new care provider loved by their community</h3>
+            <h3 class="section-subheading text-muted">Every month we celebrate care providers loved by their community</h3>
           </div>
         </div>
         <div class="row">
@@ -167,11 +170,11 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="" alt="">
+              <img class="img-fluid" src="/img/boston.jpg/" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>Chicago</h4>
-              <p class="text-muted">Illustration</p>
+              <p class="text-muted">Rosario Foster</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -181,11 +184,11 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="/img/" alt="">
+              <img class="img-fluid" src="/img/chicago.jpg/" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>Denver</h4>
-              <p class="text-muted">Graphic Design</p>
+              <p class="text-muted">Mellissa Farrell</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -195,11 +198,11 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="denver.jpg/img/" alt="">
+              <img class="img-fluid" src="img/denver.jpg" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>Houston</h4>
-              <p class="text-muted">Identity</p>
+              <p class="text-muted">Andrea Romero</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -209,11 +212,11 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="/img/" alt="">
+              <img class="img-fluid" src="img/newjersey.jpg/" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>New Jersey</h4>
-              <p class="text-muted">Branding</p>
+              <p class="text-muted">Caroline Campos</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -223,11 +226,11 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="img/" alt="">
+              <img class="img-fluid" src="img/sanfran.jpg/" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>New York</h4>
-              <p class="text-muted">Website Design</p>
+              <p class="text-muted">Tina Moore</p>
             </div>
           </div>
           <div class="col-md-4 col-sm-6 portfolio-item">
@@ -238,11 +241,11 @@
                 </div>
               </div>
 
-              <img class="img-fluid" src="img/" alt="">
+              <img class="img-fluid" src="img/newyork.jpg/" alt="">
             </a>
             <div class="portfolio-caption">
               <h4>San Francisco</h4>
-              <p class="text-muted">Photography</p>
+              <p class="text-muted">James Thomas</p>
             </div>
           </div>
         </div>
@@ -266,7 +269,7 @@
             <ul class="timeline">
               <li>
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/" alt="">
+                  <img class="rounded-circle img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -274,13 +277,13 @@
                     <!-- <h4 class="subheading">Our Humble Beginnings</h4> -->
                   </div>
                   <div class="timeline-body">
-                    <p class="text-muted">Having an account as a care provider under NannyNow is limitless, you are now able to offer your care services and accept jobs sent to you by people in your area!</p>
+                    <p class="text-muted">Having an account as a care provider under NannyNow is limitless, you are now able to offer your care services and accept jobs sent to you by users in your area!</p>
                   </div>
                 </div>
               </li>
               <li class="timeline-inverted">
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/" alt="">
+                  <img class="rounded-circle img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -294,7 +297,7 @@
               </li>
               <li>
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/" alt="">
+                  <img class="rounded-circle img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -308,7 +311,7 @@
               </li>
               <li class="timeline-inverted">
                 <div class="timeline-image">
-                  <img class="rounded-circle img-fluid" src="img/" alt="">
+                  <img class="rounded-circle img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
@@ -505,25 +508,7 @@
 
 <!-- user templates -->
 
-<!-- <template id="user-show-page">
-  <div class="vue-component">
-    <div class="container">
 
-      <h5>{{ user.imageUrl }}</h5>
-      <h5>{{ user.first_name }}</h5>
-      <h5>{{ user.last_name }}</h5>
-      <h5>{{ user.email }}</h5>
-      <h5>{{ user.gender }}</h5>
-      <h5>{{ user.city }}</h5>
-      <h5>{{ user.state }}</h5>
-      <h5>{{ user.zipCode }}</h5>
-
-      <img v-bind:src="user.image_url" alt="">
-      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Edit</a>
-      <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete</a>
-    </div>
-  </div>
-</template> -->
 
 <template id="users-edit-page">
  
@@ -563,7 +548,7 @@
         <input type="text" class="form=control" v-model="zipCode">      
       </div>
       <div class="form-group">
-        <label>Change your profile photo:</label>
+        <label>Profile photo:</label>
         <input type="text" class="form-control" v-model="imageUrl">      
       </div>
       <div class="form-group">
@@ -574,6 +559,11 @@
         <label>Password Confirmation:</label>
         <input type="text" class="form=control" v-model="password_confirmation">      
       </div> 
+
+      <div>
+        Image: <input type="file" v-on:change="uploadFile($event)">
+      </div>
+
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>   
     </div>  
   </div>
@@ -584,18 +574,14 @@
 
 <!-- Request Templates
  -->
-<template id="request-new_page">
+<template id="requests-new-page">
   <div class="vue-component">
 
   <div class="container">  
-  <h1>Make a Request</h1>
+  
   <ul>
     <li class="text-danger" v-for="error in errors"{{ error }}></li>
   </ul>
-  <div class="form-group">
-    <label>Enter your user id:</label>
-    <input type="integer" class="form-control" v-model="parent_id"> 
-  </div>
   <div class="form-group">
     <label>Enter the Nanny's id to request service:</label> 
     <input type="integer" class="form-control" v-model="nanny_id">  
@@ -646,7 +632,7 @@
   <div class="vue-component">
     
   <div class="container">  
-  <h1>Edit your Request</h1>
+  
   <ul>
     <li class="text-danger" v-for="error in errors"{{ error }}></li>
   </ul>
@@ -741,10 +727,14 @@
       <div class="form-group">
         <label>Password confirmation:</label>
         <input type="password" class="form-control" v-model="password_confirmation">
+
+        <div>
+        Image: <input type="file" v-on:change="uploadFile($event)">
+        </div>
+
       </div>
       <button class="btn btn-primary" v-on:click="submit()">Submit</button>
     </div>
-
   </div>
 </template>
 
@@ -773,7 +763,7 @@
 <template id="user-profile-page">
   <div class="vue-component">
     <div v-if="user" class="container">
-      <h3>{{ user.imageUrl }}</h3>
+      <h3>{{ user.image }}</h3>
       <h3>{{ user.first_name }}</h3>
       <h3>{{ user.last_name }}</h3>
       <h3>{{ user.email }}</h3>
@@ -784,18 +774,21 @@
 
       <img v-bind:src="user.image_url" alt="">
       <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/edit'">Edit</a>
+
      <!--  <a class="btn btn-primary" v-bind:href="'/#/users/' + user.id + '/delete'">Delete</a> -->
 
 
         <div v-for="request in requests">
           <a v-bind:href="'/#/requests/' + request.id + '/edit'">
+          <a v-bind:href="'/#/requests/' + request.id + '/new'">
             <p>Status: {{ request.status }}</p>
             <p>Start: {{ request.start_time }}</p>
             <p>End: {{ request.end_time }}</p>
             <p>Location: {{ request.location }}</p>
             <p>Children #: {{ request.number_of_children }}</p>
             <p>Rate: {{ request.pay_rate }}</p>
-    <a class="btn btn-primary" v-bind:href="'/#/requests/' + request.id + '/edit'">Edit requests</a>
+    <a class="btn btn-primary" v-bind:href="'/#/requests/' + request.id + '/edit'">Edit request</a>
+    <a class="btn btn-primary" v-bind:href="'/#/requests/' + request.id + '/new'">Create new request</a>
           </a>
         </div>
     </div>

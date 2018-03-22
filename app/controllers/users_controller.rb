@@ -23,7 +23,8 @@ class UsersController < ApplicationController
                     state: params[:state],
                     zip_code: params[:zip_code],
                     password: params[:password],
-                    password_confirmation: params[:password_confirmation]
+                    password_confirmation: params[:password_confirmation],
+                    image: params[:image]
                     )
     if user.save
       render json:{message:'User created successfully'},
